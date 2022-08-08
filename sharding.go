@@ -6,12 +6,13 @@ package sharding
 import "fmt"
 
 type Sharding interface {
+	AddConfig(Config) error
 	Rewrite(sql string) string
 }
 
 type sharding struct{}
 
-func NewSharding() *sharding {
+func NewSharding() Sharding {
 	return &sharding{}
 }
 
