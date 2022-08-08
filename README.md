@@ -1,2 +1,2 @@
-# go-sharding
+# sharding
 Rewrite SQL with sharding table info.
