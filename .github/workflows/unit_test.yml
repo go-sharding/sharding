@@ -1,0 +1,11 @@
+name: Unit Test Job
+on: [push]
+jobs:
+  unit-test:
+    runs-on: golang:1.17.13-buster
+    steps:
+      - run: echo "Unit test begin..."
+      - run: go test -cover -covermode=atomic -gcflags=all=-l ./... -coverprofile=coverage.txt
+      - run: go tool cover -func coverage.txt
+      - run: bash <(curl -s https://codecov.io/bash)
+      - run: echo "🍏 This job's status is ${{ job.status }}."
