@@ -2,7 +2,10 @@ name: Unit Test Job
 on: [push]
 jobs:
   unit-test:
-    runs-on: golang:1.17.13-buster
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: [ 1.17.13 ]
     steps:
       - run: echo "Unit test begin..."
       - run: go test -cover -covermode=atomic -gcflags=all=-l ./... -coverprofile=coverage.txt
